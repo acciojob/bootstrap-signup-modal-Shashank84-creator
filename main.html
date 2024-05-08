@@ -1,56 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signup Modal</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-
-<!-- Sign Up Button -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModal">
-  Sign Up
-</button>
-
-<!-- Signup Modal -->
-<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="signupModalLabel">Create Account</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <!-- Email Input -->
-          <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" required>
-            <small class="form-text text-muted">Your information is safe with us.</small>
-          </div>
-          <!-- Password Input -->
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password" required>
-          </div>
-          <!-- Confirm Password Input -->
-          <div class="form-group">
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
-          </div>
-          <!-- Submit Button -->
-          <button type="submit" class="btn btn-primary btn-block">Submit</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+<!DOCTYPE html> 
+<html> 
+<style> 
+    /*add full-width input fields*/ 
+    input[type=text], 
+    input[type=password] { 
+        width: 100%; 
+        padding: 12px 20px; 
+        margin: 8px 0; 
+        display: inline-block; 
+        border: 2px solid #ccc; 
+        box-sizing: border-box; 
+    } 
+    /* set a style for all buttons*/ 
+    button { 
+        background-color: red; 
+        color: white; 
+        padding: 14px 20px; 
+        margin: 8px 0; 
+        cursor: pointer; 
+        width: 100%; 
+    } 
+    /*set styles for the cancel button*/ 
+    .cancelbtn { 
+        padding: 14px 20px; 
+        background-color: #FF2E00; 
+    } 
+    /*float cancel and signup buttons and add an equal width*/ 
+    .cancelbtn, 
+    .signupbtn { 
+        float: left; 
+        width: 50% 
+    } 
+    /*add padding to container elements*/ 
+    .container { 
+        padding: 16px; 
+    } 
+    /*define the modal’s background*/ 
+      
+    .modal { 
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        left: 0; 
+        top: 0; 
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgb(0, 0, 0); 
+        background-color: rgba(0, 0, 0, 0.4); 
+        padding-top: 60px; 
+    } 
+    /*define the modal-content background*/ 
+      
+    .modal-content { 
+        background-color: #fefefe; 
+        margin: 5% auto 15% auto; 
+        border: 1px solid #888; 
+        width: 80%; 
+    } 
+    /*define the close button*/ 
+      
+    .close { 
+        position: absolute; 
+        right: 35px; 
+        top: 15px; 
+        color: #000; 
+        font-size: 40px; 
+        font-weight: bold; 
+    } 
+    /*define the close hover and focus effects*/ 
+      
+    .close:hover, 
+    .close:focus { 
+        color: red; 
+        cursor: pointer; 
+    } 
+      
+    .clearfix::after { 
+        content: ""; 
+        clear: both; 
+        display: table; 
+    } 
+      
+    @media screen and (max-width: 600px) { 
+        .cancelbtn, 
+        .signupbtn { 
+            width: 100%; 
+        } 
+    } 
+</style> 
+  
+<body> 
+  
+    <h2>Modal Signup Form</h2> 
+    <!--Step 1:Adding HTML-->
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button> 
+  
+    <div id="id01" class="modal"> 
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span> 
+        <form class="modal-content animate" action="/action_page.php"> 
+            <div class="container"> 
+                <label><b>Email</b></label> 
+                <input type="text" placeholder="Enter Email" name="email" required> 
+  
+                <label><b>Password</b></label> 
+                <input type="password" placeholder="Enter Password" name="psw" required> 
+  
+                <label><b>Confirm Password</b></label> 
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" required> 
+                <input type="checkbox"> Remember me 
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> 
+  
+                <div class="clearfix"> 
+                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+                </div> 
+            </div> 
+        </form> 
+    </div> 
+  
+    <!--close the modal by just clicking outside of the modal-->
+    <script> 
+        var modal = document.getElementById('id01'); 
+          
+        window.onclick = function(event) { 
+            if (event.target == modal) { 
+                modal.style.display = "none"; 
+            } 
+        } 
+    </script> 
+  
+</body> 
+  
 </html>
